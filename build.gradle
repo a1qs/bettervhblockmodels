@@ -21,7 +21,7 @@ apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'org.spongepowered.mixin'
 
 
-version = '0.x.x-1.18.2'
+version = '1.0.0-1.18.2'
 group = 'io.github.a1qs.bettervhblockmodels'
 archivesBaseName = 'bettervhblockmodels'
 
