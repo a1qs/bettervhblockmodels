@@ -1,0 +1,30 @@
+modLoader="javafml"
+loaderVersion="[40,)"
+license="GPLv3"
+#issueTrackerURL="https://github.com/a1qs"
+
+[[mods]]
+modId="bettervhblockmodels"
+version="${file.jarVersion}"
+displayName="Better Vault Hunters Block Models"
+#displayURL="https://github.com/a1qs"
+#logoFile="bettervhblockmodels.png"
+authors="a1qs"
+description='''
+A mod to make The Vault Hunters Block Hitboxes respect their actual Block Models
+Incompatible with Resourcepacks that change the Block Models
+'''
+
+[[dependencies.bettervhblockmodels]]
+    modId="forge"
+    mandatory=true
+    versionRange="[40,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.bettervhblockmodels]]
+    modId="the_vault"
+    mandatory=true
+    versionRange="[1.18.2-3.15.1.3298,)"
+    ordering="NONE"
+    side="BOTH"
