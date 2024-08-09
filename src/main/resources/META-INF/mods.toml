@@ -1,14 +1,14 @@
 modLoader="javafml"
 loaderVersion="[40,)"
 license="GPLv3"
-#issueTrackerURL="https://github.com/a1qs"
+issueTrackerURL="https://github.com/a1qs/bettervhblockmodels/issues"
 
 [[mods]]
 modId="bettervhblockmodels"
 version="${file.jarVersion}"
 displayName="Better Vault Hunters Block Models"
-#displayURL="https://github.com/a1qs"
-#logoFile="bettervhblockmodels.png"
+displayURL="https://github.com/a1qs/bettervhblockmodels"
+logoFile="bettervhblockmodels.png"
 authors="a1qs"
 description='''
 A mod to make The Vault Hunters Block Hitboxes respect their actual Block Models
