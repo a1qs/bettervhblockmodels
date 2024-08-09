@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 import javax.annotation.Nonnull;
 
-@Mixin(value = ObeliskBlock.class, remap = false)
+@Mixin(value = ObeliskBlock.class)
 public class MixinObeliskBlock {
     /**
      * @author a1qs

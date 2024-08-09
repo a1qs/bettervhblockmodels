@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 import javax.annotation.Nonnull;
 
-@Mixin(value = VaultCrateBlock.class, remap = false)
+@Mixin(value = VaultCrateBlock.class)
 public class MixinVaultCrateBlock {
     /**
      * @author a1qs

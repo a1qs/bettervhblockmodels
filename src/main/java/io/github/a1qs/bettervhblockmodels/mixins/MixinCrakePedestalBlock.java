@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 import javax.annotation.Nonnull;
 
-@Mixin(value = CrakePedestalBlock.class, remap = false)
+@Mixin(value = CrakePedestalBlock.class)
 public class MixinCrakePedestalBlock {
 
     /**

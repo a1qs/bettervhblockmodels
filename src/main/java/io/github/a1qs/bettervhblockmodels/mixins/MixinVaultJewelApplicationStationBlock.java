@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 import javax.annotation.Nonnull;
 
-@Mixin(value = VaultJewelApplicationStationBlock.class, remap = false)
+@Mixin(value = VaultJewelApplicationStationBlock.class)
 public class MixinVaultJewelApplicationStationBlock {
 
     /**

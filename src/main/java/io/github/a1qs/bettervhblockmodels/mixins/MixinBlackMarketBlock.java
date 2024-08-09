@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 import javax.annotation.Nonnull;
 
-@Mixin(value = BlackMarketBlock.class, remap = false)
+@Mixin(value = BlackMarketBlock.class)
 public class MixinBlackMarketBlock {
     /**
      * @author a1qs

@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 import javax.annotation.Nonnull;
 
-@Mixin(value = GridGatewayBlock.class, remap = false)
+@Mixin(value = GridGatewayBlock.class)
 public class MixinGridGatewayBlock {
     /**
      * @author a1qs

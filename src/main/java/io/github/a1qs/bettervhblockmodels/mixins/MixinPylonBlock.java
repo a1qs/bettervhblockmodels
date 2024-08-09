@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 import javax.annotation.Nonnull;
 
-@Mixin(value = PylonBlock.class, remap = false)
+@Mixin(value = PylonBlock.class)
 public class MixinPylonBlock {
     /**
      * @author a1qs

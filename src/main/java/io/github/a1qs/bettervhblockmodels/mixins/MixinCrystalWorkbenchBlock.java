@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 import javax.annotation.Nonnull;
 
-@Mixin(value = CrystalWorkbenchBlock.class, remap = false)
+@Mixin(value = CrystalWorkbenchBlock.class)
 public class MixinCrystalWorkbenchBlock {
 
     /**

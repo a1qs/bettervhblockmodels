@@ -11,7 +11,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-@Mixin(value = MVPCrownBlock.class, remap = false)
+@Mixin(value = MVPCrownBlock.class)
 public class MixinMVPCrownBlock {
 
     /**

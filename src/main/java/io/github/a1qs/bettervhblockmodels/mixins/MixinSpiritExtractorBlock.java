@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 import javax.annotation.Nonnull;
 
-@Mixin(value= SpiritExtractorBlock.class, remap = false)
+@Mixin(value= SpiritExtractorBlock.class)
 public class MixinSpiritExtractorBlock {
     /**
      * @author a1qs

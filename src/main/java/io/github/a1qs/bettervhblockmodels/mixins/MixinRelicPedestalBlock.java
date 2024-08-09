@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 import javax.annotation.Nonnull;
 
 @SuppressWarnings("removal")
-@Mixin(value = RelicPedestalBlock.class, remap = false )
+@Mixin(value = RelicPedestalBlock.class)
 public class MixinRelicPedestalBlock {
 
     /**

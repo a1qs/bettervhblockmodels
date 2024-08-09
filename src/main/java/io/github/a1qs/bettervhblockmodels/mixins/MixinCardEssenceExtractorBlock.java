@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 import javax.annotation.Nonnull;
 
-@Mixin(value = CardEssenceExtractorBlock.class, remap = false)
+@Mixin(value = CardEssenceExtractorBlock.class)
 public class MixinCardEssenceExtractorBlock {
     /**
      * @author a1qs

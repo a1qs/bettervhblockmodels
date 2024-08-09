@@ -10,7 +10,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-@Mixin(value = ScavengerAltarBlock.class, remap = false)
+@Mixin(value = ScavengerAltarBlock.class)
 public class MixinScavengerAltarBlock {
     /**
      * @author a1qs

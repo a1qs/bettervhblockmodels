@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 import javax.annotation.Nonnull;
 
-@Mixin(value = MonolithBlock.class, remap = false)
+@Mixin(value = MonolithBlock.class)
 public class MixinMonolithBlock {
     /**
      * @author a1qs

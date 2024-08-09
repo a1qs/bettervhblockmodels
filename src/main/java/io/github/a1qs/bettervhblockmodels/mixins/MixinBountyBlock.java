@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 import javax.annotation.Nonnull;
 
-@Mixin(value = BountyBlock.class, remap = false)
+@Mixin(value = BountyBlock.class)
 public class MixinBountyBlock {
     /**
      * @author a1qs

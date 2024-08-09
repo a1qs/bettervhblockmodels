@@ -10,7 +10,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-@Mixin(value = OfferingPillarBlock.class, remap = false)
+@Mixin(value = OfferingPillarBlock.class)
 public class OfferingPillarBlockMixin {
     /**
      * @author a1qs

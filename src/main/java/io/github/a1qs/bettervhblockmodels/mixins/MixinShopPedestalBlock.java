@@ -10,7 +10,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-@Mixin(value = ShopPedestalBlock.class, remap = false)
+@Mixin(value = ShopPedestalBlock.class)
 public class MixinShopPedestalBlock {
     /**
      * @author a1qs

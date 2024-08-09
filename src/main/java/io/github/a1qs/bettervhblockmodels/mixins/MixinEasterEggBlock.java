@@ -10,7 +10,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-@Mixin(value = EasterEggBlock.class, remap = false)
+@Mixin(value = EasterEggBlock.class)
 public class MixinEasterEggBlock {
 
     /**

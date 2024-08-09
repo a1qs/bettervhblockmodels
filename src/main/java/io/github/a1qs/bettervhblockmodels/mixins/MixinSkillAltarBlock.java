@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 import javax.annotation.Nonnull;
 
-@Mixin(value = SkillAltarBlock.class, remap = false)
+@Mixin(value = SkillAltarBlock.class)
 public class MixinSkillAltarBlock {
     /**
      * @author a1qs

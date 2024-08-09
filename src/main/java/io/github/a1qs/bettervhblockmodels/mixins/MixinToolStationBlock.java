@@ -13,7 +13,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 import javax.annotation.Nonnull;
 
-@Mixin(value = ToolStationBlock.class, remap = false)
+@Mixin(value = ToolStationBlock.class)
 public class MixinToolStationBlock {
     /**
      * @author a1qs

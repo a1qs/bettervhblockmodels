@@ -14,7 +14,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-@Mixin(value = BlockBehaviour.class, remap = false)
+@Mixin(value = BlockBehaviour.class)
 public class MixinBlockBehaviour {
     @Inject(method = "getShape", at = @At("HEAD"), cancellable = true)
     public void addAdditionalShapes(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext, CallbackInfoReturnable<VoxelShape> cir) {

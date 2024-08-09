@@ -12,7 +12,7 @@ import org.spongepowered.asm.mixin.Overwrite;
 
 import javax.annotation.Nonnull;
 
-@Mixin(value = WardrobeBlock.class, remap = false)
+@Mixin(value = WardrobeBlock.class)
 public class MixinWardrobeBlock {
     /**
      * @author a1qs

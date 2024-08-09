@@ -11,7 +11,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Overwrite;
 
-@Mixin(value = StabilizerBlock.class, remap = false)
+@Mixin(value = StabilizerBlock.class)
 public class MixinStabilizerBlock {
     /**
      * @author a1qs
