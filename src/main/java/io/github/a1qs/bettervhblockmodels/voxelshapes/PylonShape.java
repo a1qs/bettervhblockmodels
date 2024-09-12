@@ -7,6 +7,7 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class PylonShape {
     public static final VoxelShape PYLON_SHAPE;
+    public static final VoxelShape DEFAULT_PYLON_SHAPE;
     static {
         VoxelShape[] shape = {
                 Shapes.box(0.1875, 0.25, 0.875, 0.8125, 0.375, 1),
@@ -20,5 +21,6 @@ public class PylonShape {
                 Block.box(3.0, 0.0, 3.0, 13.0, 18.0, 13.0),
         };
         PYLON_SHAPE = VoxelShapeUtil.mergeVoxelShapes(shape);
+        DEFAULT_PYLON_SHAPE = Block.box(2.0, 0.0, 2.0, 14.0, 18.0, 14.0);
     }
 }

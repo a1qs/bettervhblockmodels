@@ -1,5 +1,6 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.EasterEggShape;
 import iskallia.vault.block.EasterEggBlock;
 import net.minecraft.core.BlockPos;
@@ -19,6 +20,9 @@ public class MixinEasterEggBlock {
      */
     @Overwrite
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return EasterEggShape.EGG_SHAPE;
+        if (CommonConfigs.EASTER_EGG.get()) {
+            return EasterEggShape.EGG_SHAPE;
+        }
+        return EasterEggBlock.SHAPE;
     }
 }

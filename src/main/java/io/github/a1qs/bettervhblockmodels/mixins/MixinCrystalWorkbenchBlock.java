@@ -1,5 +1,6 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.CrystalWorkbenchShape;
 import iskallia.vault.block.CrystalWorkbenchBlock;
 import net.minecraft.core.BlockPos;
@@ -22,6 +23,9 @@ public class MixinCrystalWorkbenchBlock {
     @Overwrite
     @Nonnull
     public VoxelShape getShape(@Nonnull BlockState state, @Nonnull BlockGetter world, @Nonnull BlockPos pos, @Nonnull CollisionContext context) {
-        return CrystalWorkbenchShape.CRYSTAL_WORKBENCH_SHAPE;
+        if(CommonConfigs.CRYSTAL_WORKBENCH.get()) {
+            return CrystalWorkbenchShape.CRYSTAL_WORKBENCH_SHAPE;
+        }
+        return CrystalWorkbenchBlock.SHAPE;
     }
 }

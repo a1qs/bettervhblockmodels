@@ -1,5 +1,6 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.PylonShape;
 import iskallia.vault.block.PylonBlock;
 import net.minecraft.core.BlockPos;
@@ -21,6 +22,9 @@ public class MixinPylonBlock {
     @Overwrite
     @Nonnull
     public VoxelShape getShape(@Nonnull BlockState state, @Nonnull BlockGetter world, @Nonnull BlockPos pos, @Nonnull CollisionContext context) {
-        return PylonShape.PYLON_SHAPE;
+        if (CommonConfigs.PYLON.get()) {
+            return PylonShape.PYLON_SHAPE;
+        }
+        return PylonShape.DEFAULT_PYLON_SHAPE;
     }
 }

@@ -1,5 +1,6 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.SkillAltarShape;
 import iskallia.vault.block.SkillAltarBlock;
 import net.minecraft.core.BlockPos;
@@ -22,14 +23,17 @@ public class MixinSkillAltarBlock {
     @Nonnull
     @Overwrite
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        VoxelShape skillAltarShape;
         Direction direction = pState.getValue(SkillAltarBlock.FACING);
-        switch (direction) {
-            case SOUTH -> skillAltarShape = SkillAltarShape.SKILL_ALTAR_SHAPE;
-            case EAST -> skillAltarShape = SkillAltarShape.SKILL_ALTAR_SHAPE_270;
-            case NORTH -> skillAltarShape = SkillAltarShape.SKILL_ALTAR_SHAPE_180;
-            default -> skillAltarShape = SkillAltarShape.SKILL_ALTAR_SHAPE_90;
+        if (CommonConfigs.SKILL_ALTAR.get()) {
+            VoxelShape skillAltarShape;
+            switch (direction) {
+                case SOUTH -> skillAltarShape = SkillAltarShape.SKILL_ALTAR_SHAPE;
+                case EAST -> skillAltarShape = SkillAltarShape.SKILL_ALTAR_SHAPE_270;
+                case NORTH -> skillAltarShape = SkillAltarShape.SKILL_ALTAR_SHAPE_180;
+                default -> skillAltarShape = SkillAltarShape.SKILL_ALTAR_SHAPE_90;
+            }
+            return skillAltarShape;
         }
-        return skillAltarShape;
+        return direction.getAxis() == Direction.Axis.X ? SkillAltarShape.SKILL_ALTAR_X_SHAPE : SkillAltarShape.SKILL_ALTAR_Z_SHAPE;
     }
 }

@@ -1,5 +1,6 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.VaultCrateShape;
 import iskallia.vault.block.VaultCrateBlock;
 import net.minecraft.core.BlockPos;
@@ -21,6 +22,9 @@ public class MixinVaultCrateBlock {
     @Overwrite
     @Nonnull
     public VoxelShape getShape(@Nonnull BlockState state, @Nonnull BlockGetter world, @Nonnull BlockPos pos, @Nonnull CollisionContext context) {
-        return VaultCrateShape.CRATE_SHAPE;
+        if (CommonConfigs.VAULT_CRATE.get()) {
+            return VaultCrateShape.CRATE_SHAPE;
+        }
+        return VaultCrateBlock.SHAPE;
     }
 }

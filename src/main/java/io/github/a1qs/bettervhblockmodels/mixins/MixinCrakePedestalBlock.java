@@ -1,5 +1,6 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.CrakePedestalShape;
 import iskallia.vault.block.CrakePedestalBlock;
 import net.minecraft.core.BlockPos;
@@ -22,6 +23,9 @@ public class MixinCrakePedestalBlock {
     @Overwrite
     @Nonnull
     public VoxelShape getShape(@Nonnull BlockState state, @Nonnull BlockGetter world, @Nonnull BlockPos pos, @Nonnull CollisionContext context) {
-        return CrakePedestalShape.CRAKE_PEDESTAL_SHAPE;
+        if(CommonConfigs.CRAKE_PEDESTAL_BLOCK.get()) {
+            return CrakePedestalShape.CRAKE_PEDESTAL_SHAPE;
+        }
+        return CrakePedestalShape.DEFAULT_CRAKE_SHAPE;
     }
 }

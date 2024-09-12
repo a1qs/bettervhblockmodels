@@ -1,5 +1,6 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.*;
 import iskallia.vault.block.*;
 import net.minecraft.core.BlockPos;
@@ -18,34 +19,34 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 public class MixinBlockBehaviour {
     @Inject(method = "getShape", at = @At("HEAD"), cancellable = true)
     public void addAdditionalShapes(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext, CallbackInfoReturnable<VoxelShape> cir) {
-        if(pState.getBlock() instanceof VaultAltarBlock) {
+        if(pState.getBlock() instanceof VaultAltarBlock && CommonConfigs.VAULT_ALTAR.get()) {
             // Vault Altar
             cir.setReturnValue(VaultAltarShape.VAULT_ALTAR_SHAPE);
-        } else if(pState.getBlock() instanceof VaultEnhancementAltar) {
+        } else if(pState.getBlock() instanceof VaultEnhancementAltar && CommonConfigs.ENHANCEMENT_ALTAR.get()) {
             // Vault Enhancement Altar
             cir.setReturnValue(VaultEnhancementAltarShape.VAULT_ENHANCEMENT_ALTAR_SHAPE);
-        } else if(pState.getBlock() instanceof DemagnetizerBlock) {
+        } else if(pState.getBlock() instanceof DemagnetizerBlock && CommonConfigs.DEMAGNETIZER.get()) {
             // Demagnetizer
             cir.setReturnValue(DemagnetizerShape.DEMAGNETIZER_SHAPE);
-        } else if(pState.getBlock() instanceof VaultDiffuserBlock) {
+        } else if(pState.getBlock() instanceof VaultDiffuserBlock && CommonConfigs.VAULT_DIFFUSER.get()) {
             // Vault Diffuser
             cir.setReturnValue(VaultDiffuserShape.VAULT_DIFFUSER_SHAPE);
-        } else if(pState.getBlock() instanceof VaultDiffuserUpgradedBlock) {
+        } else if(pState.getBlock() instanceof VaultDiffuserUpgradedBlock && CommonConfigs.SOUL_HARVESTER.get() ) {
             // Soul Harvester
             cir.setReturnValue(SoulHarvesterShape.SOUL_HARVESTER_SHAPE);
-        } else if(pState.getBlock() instanceof VaultRecyclerBlock) {
+        } else if(pState.getBlock() instanceof VaultRecyclerBlock && CommonConfigs.VAULT_RECYCLER.get()) {
             // Vault Recycler
             cir.setReturnValue(VaultRecyclerShape.VAULT_RECYCLER_SHAPE);
-        } else if(pState.getBlock() instanceof ModifierDiscoveryBlock) {
+        } else if(pState.getBlock() instanceof ModifierDiscoveryBlock && CommonConfigs.MODIFIER_ARCHIVE.get()) {
             // Modifier Archive
             cir.setReturnValue(ModifierArchiveShape.MODIFIER_ARCHIVE_SHAPE);
-        } else if(pState.getBlock() instanceof AnimatrixBlock) {
+        } else if(pState.getBlock() instanceof AnimatrixBlock && CommonConfigs.ANIMATRIX.get()) {
             // Animatrix
             cir.setReturnValue(AnimatrixShape.ANIMATRIX_SHAPE);
-        } else if(pState.getBlock() instanceof DebagnetizerBlock) {
+        } else if(pState.getBlock() instanceof DebagnetizerBlock && CommonConfigs.DEBAGNETIZER.get()) {
             // Debagnetizer
             cir.setReturnValue(DebagnetizerShape.DEBAGNETIZER_SHAPE);
-        } else if(pState.getBlock() instanceof VaultForgeBlock) {
+        } else if(pState.getBlock() instanceof VaultForgeBlock && CommonConfigs.VAULT_FORGE.get()) {
             // Vault Forge
             VoxelShape vaultForgeShape;
             Direction direction = pState.getValue(VaultForgeBlock.FACING);
@@ -56,7 +57,7 @@ public class MixinBlockBehaviour {
                 default -> vaultForgeShape = VaultForgeShape.FORGE_SHAPE_90;
             }
             cir.setReturnValue(vaultForgeShape);
-        } else if(pState.getBlock() instanceof VaultArtisanStationBlock) {
+        } else if(pState.getBlock() instanceof VaultArtisanStationBlock && CommonConfigs.ARTISAN_STATION.get()) {
             // Vault Artisan Station
             VoxelShape vaultArtisanShape;
             Direction direction = pState.getValue(VaultArtisanStationBlock.FACING);
@@ -67,7 +68,7 @@ public class MixinBlockBehaviour {
                 default -> vaultArtisanShape = VaultArtisanShape.VAULT_ARTISAN_SHAPE_270;
             }
             cir.setReturnValue(vaultArtisanShape);
-        } else if(pState.getBlock() instanceof ModifierWorkbenchBlock) {
+        } else if(pState.getBlock() instanceof ModifierWorkbenchBlock && CommonConfigs.MODIFIER_WORKBENCH.get()) {
             // Modifier Workbench
             VoxelShape modifierWorkbench;
             Direction direction = pState.getValue(ModifierWorkbenchBlock.FACING);
@@ -78,17 +79,6 @@ public class MixinBlockBehaviour {
                 default -> modifierWorkbench = ModifierWorkbenchShape.WORKBENCH_SHAPE_180;
             }
             cir.setReturnValue(modifierWorkbench);
-        } else if(pState.getBlock() instanceof CardEssenceExtractorBlock) {
-            // Card Essence Extractor
-            VoxelShape essenceExtractor;
-            Direction direction = pState.getValue(ModifierWorkbenchBlock.FACING);
-            switch (direction) {
-                case EAST -> essenceExtractor = CardEssenceExtractorShape.CARD_ESSENCE_EXTRACTOR_SHAPE_270;
-                case SOUTH -> essenceExtractor = CardEssenceExtractorShape.CARD_ESSENCE_EXTRACTOR_SHAPE;
-                case WEST -> essenceExtractor = CardEssenceExtractorShape.CARD_ESSENCE_EXTRACTOR_SHAPE_90;
-                default -> essenceExtractor = CardEssenceExtractorShape.CARD_ESSENCE_EXTRACTOR_SHAPE_180;
-            }
-            cir.setReturnValue(essenceExtractor);
         }
 
     }

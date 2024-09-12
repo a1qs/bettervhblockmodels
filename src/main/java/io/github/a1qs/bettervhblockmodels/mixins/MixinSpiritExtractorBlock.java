@@ -1,5 +1,6 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.SpiritExtractorShape;
 import iskallia.vault.block.SpiritExtractorBlock;
 import net.minecraft.core.BlockPos;
@@ -21,6 +22,9 @@ public class MixinSpiritExtractorBlock {
     @Overwrite
     @Nonnull
     public VoxelShape getShape(@Nonnull BlockState state, @Nonnull BlockGetter worldIn, @Nonnull BlockPos pos, @Nonnull CollisionContext context) {
-        return SpiritExtractorShape.SPIRIT_EXTRACTOR_SHAPE;
+        if (CommonConfigs.SPIRIT_EXTRACTOR.get()) {
+            return SpiritExtractorShape.SPIRIT_EXTRACTOR_SHAPE;
+        }
+        return SpiritExtractorShape.SPIRIT_EXTRACTOR_DEFAULT_SHAPE;
     }
 }

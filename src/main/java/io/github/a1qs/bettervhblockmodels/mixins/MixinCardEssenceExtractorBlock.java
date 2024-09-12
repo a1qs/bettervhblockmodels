@@ -1,5 +1,6 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.CardEssenceExtractorShape;
 import iskallia.vault.block.CardEssenceExtractorBlock;
 import net.minecraft.core.BlockPos;
@@ -22,14 +23,17 @@ public class MixinCardEssenceExtractorBlock {
     @Nonnull
     @Overwrite
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        VoxelShape essenceExtractor;
         Direction direction = pState.getValue(CardEssenceExtractorBlock.FACING);
-        switch (direction) {
-            case EAST -> essenceExtractor = CardEssenceExtractorShape.CARD_ESSENCE_EXTRACTOR_SHAPE_180;
-            case SOUTH -> essenceExtractor = CardEssenceExtractorShape.CARD_ESSENCE_EXTRACTOR_SHAPE_270;
-            case WEST -> essenceExtractor = CardEssenceExtractorShape.CARD_ESSENCE_EXTRACTOR_SHAPE;
-            default -> essenceExtractor = CardEssenceExtractorShape.CARD_ESSENCE_EXTRACTOR_SHAPE_90;
+        if(CommonConfigs.CARD_ESSENCE_EXTRACTOR.get()) {
+            VoxelShape essenceExtractor;
+            switch (direction) {
+                case EAST -> essenceExtractor = CardEssenceExtractorShape.CARD_ESSENCE_EXTRACTOR_SHAPE_180;
+                case SOUTH -> essenceExtractor = CardEssenceExtractorShape.CARD_ESSENCE_EXTRACTOR_SHAPE_270;
+                case WEST -> essenceExtractor = CardEssenceExtractorShape.CARD_ESSENCE_EXTRACTOR_SHAPE;
+                default -> essenceExtractor = CardEssenceExtractorShape.CARD_ESSENCE_EXTRACTOR_SHAPE_90;
+            }
+            return essenceExtractor;
         }
-        return essenceExtractor;
+        return direction.getAxis() == Direction.Axis.X ? CardEssenceExtractorBlock.SHAPE_EW : CardEssenceExtractorBlock.SHAPE_SN;
     }
 }

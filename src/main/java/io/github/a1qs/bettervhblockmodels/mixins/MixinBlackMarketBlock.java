@@ -1,5 +1,6 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.BlackMarketShape;
 import iskallia.vault.block.BlackMarketBlock;
 import net.minecraft.core.BlockPos;
@@ -21,6 +22,9 @@ public class MixinBlackMarketBlock {
     @Overwrite
     @Nonnull
     public VoxelShape getShape(@Nonnull BlockState state, @Nonnull BlockGetter world, @Nonnull BlockPos pos, @Nonnull CollisionContext context) {
-        return BlackMarketShape.BLACK_MARKET_SHAPE;
+        if(CommonConfigs.BLACK_MARKET.get()) {
+            return BlackMarketShape.BLACK_MARKET_SHAPE;
+        }
+        return BlackMarketBlock.SHAPE;
     }
 }

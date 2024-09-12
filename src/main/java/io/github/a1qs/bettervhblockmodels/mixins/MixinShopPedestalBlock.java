@@ -1,5 +1,6 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.ShopPedestalShape;
 import iskallia.vault.block.ShopPedestalBlock;
 import net.minecraft.core.BlockPos;
@@ -18,7 +19,10 @@ public class MixinShopPedestalBlock {
      */
     @Overwrite
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return ShopPedestalShape.SHOP_PEDESTAL_SHAPE;
+        if (CommonConfigs.SHOP_PEDESTAL.get()) {
+            return ShopPedestalShape.SHOP_PEDESTAL_SHAPE;
+        }
+        return ShopPedestalBlock.SHAPE;
     }
 
 }

@@ -1,5 +1,6 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.InscriptionTableShape;
 import iskallia.vault.block.InscriptionTableBlock;
 import iskallia.vault.block.VaultArtisanStationBlock;
@@ -23,14 +24,17 @@ public class MixinInscriptionTableBlock {
     @Nonnull
     @Overwrite
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        VoxelShape inscriptionTableShape;
-        Direction direction = pState.getValue(VaultArtisanStationBlock.FACING);
-        switch (direction) {
-            case SOUTH -> inscriptionTableShape = InscriptionTableShape.INSCRIPTION_TABLE_SHAPE_90;
-            case EAST -> inscriptionTableShape = InscriptionTableShape.INSCRIPTION_TABLE_SHAPE;
-            case NORTH -> inscriptionTableShape = InscriptionTableShape.INSCRIPTION_TABLE_SHAPE_270;
-            default -> inscriptionTableShape = InscriptionTableShape.INSCRIPTION_TABLE_SHAPE_180;
+        if (CommonConfigs.INSCRIPTION_TABLE.get()) {
+            VoxelShape inscriptionTableShape;
+            Direction direction = pState.getValue(VaultArtisanStationBlock.FACING);
+            switch (direction) {
+                case SOUTH -> inscriptionTableShape = InscriptionTableShape.INSCRIPTION_TABLE_SHAPE_90;
+                case EAST -> inscriptionTableShape = InscriptionTableShape.INSCRIPTION_TABLE_SHAPE;
+                case NORTH -> inscriptionTableShape = InscriptionTableShape.INSCRIPTION_TABLE_SHAPE_270;
+                default -> inscriptionTableShape = InscriptionTableShape.INSCRIPTION_TABLE_SHAPE_180;
+            }
+            return inscriptionTableShape;
         }
-        return inscriptionTableShape;
+        return InscriptionTableBlock.SHAPE;
     }
 }

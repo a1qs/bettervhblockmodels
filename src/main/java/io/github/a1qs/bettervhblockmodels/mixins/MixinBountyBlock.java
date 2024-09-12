@@ -1,5 +1,6 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.BountyTableShape;
 import iskallia.vault.block.BountyBlock;
 import net.minecraft.core.BlockPos;
@@ -22,14 +23,17 @@ public class MixinBountyBlock {
     @Nonnull
     @Overwrite
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        VoxelShape bountyTableShape;
-        Direction direction = pState.getValue(BountyBlock.FACING);
-        switch (direction) {
-            case SOUTH -> bountyTableShape = BountyTableShape.BOUNTY_TABLE_SHAPE_180;
-            case EAST -> bountyTableShape = BountyTableShape.BOUNTY_TABLE_SHAPE_90;
-            case NORTH -> bountyTableShape = BountyTableShape.BOUNTY_TABLE_SHAPE;
-            default -> bountyTableShape = BountyTableShape.BOUNTY_TABLE_SHAPE_270;
+        if(CommonConfigs.BOUNTY_BLOCK.get()) {
+            VoxelShape bountyTableShape;
+            Direction direction = pState.getValue(BountyBlock.FACING);
+            switch (direction) {
+                case SOUTH -> bountyTableShape = BountyTableShape.BOUNTY_TABLE_SHAPE_180;
+                case EAST -> bountyTableShape = BountyTableShape.BOUNTY_TABLE_SHAPE_90;
+                case NORTH -> bountyTableShape = BountyTableShape.BOUNTY_TABLE_SHAPE;
+                default -> bountyTableShape = BountyTableShape.BOUNTY_TABLE_SHAPE_270;
+            }
+            return bountyTableShape;
         }
-        return bountyTableShape;
+        return BountyBlock.SHAPE;
     }
 }

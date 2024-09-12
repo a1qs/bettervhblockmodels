@@ -1,5 +1,6 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.RelicPedestalShape;
 import iskallia.vault.block.RelicPedestalBlock;
 import net.minecraft.core.BlockPos;
@@ -23,6 +24,9 @@ public class MixinRelicPedestalBlock {
     @Overwrite
     @Nonnull
     public VoxelShape getShape(@Nonnull BlockState state, @Nonnull BlockGetter worldIn, @Nonnull BlockPos pos, @Nonnull CollisionContext context) {
-        return RelicPedestalShape.RELIC_PEDESTAL_SHAPE;
+        if (CommonConfigs.RELIC_PEDESTAL.get()) {
+            return RelicPedestalShape.RELIC_PEDESTAL_SHAPE;
+        }
+        return RelicPedestalBlock.SHAPE;
     }
 }

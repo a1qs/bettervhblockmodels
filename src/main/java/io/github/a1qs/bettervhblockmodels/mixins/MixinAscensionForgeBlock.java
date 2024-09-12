@@ -1,5 +1,6 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.AscensionForgeShape;
 import iskallia.vault.block.AscensionForgeBlock;
 import net.minecraft.core.BlockPos;
@@ -18,6 +19,9 @@ public class MixinAscensionForgeBlock {
      */
     @Overwrite
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return AscensionForgeShape.ASCENSION_FORGE_SHAPE;
+        if(CommonConfigs.ASCENSION_FORGE.get()) {
+            return AscensionForgeShape.ASCENSION_FORGE_SHAPE;
+        }
+         return AscensionForgeBlock.SHAPE;
     }
 }

@@ -1,5 +1,6 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.ScavengerAltarShape;
 import iskallia.vault.block.OfferingPillarBlock;
 import net.minecraft.core.BlockPos;
@@ -18,6 +19,9 @@ public class OfferingPillarBlockMixin {
      */
     @Overwrite
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return ScavengerAltarShape.SCAVENGER_ALTAR_SHAPE;
+        if (CommonConfigs.OFFERING_PILLAR.get()) {
+            return ScavengerAltarShape.SCAVENGER_ALTAR_SHAPE;
+        }
+        return ScavengerAltarShape.SCAVENGER_DEFAULT_SHAPE;
     }
 }

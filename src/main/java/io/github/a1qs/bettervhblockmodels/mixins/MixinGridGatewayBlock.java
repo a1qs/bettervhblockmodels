@@ -1,5 +1,6 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.GridGatewayShape;
 import iskallia.vault.block.GridGatewayBlock;
 import net.minecraft.core.BlockPos;
@@ -21,6 +22,9 @@ public class MixinGridGatewayBlock {
     @Nonnull
     @Overwrite
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return GridGatewayShape.GRID_GATEWAY_SHAPE;
+        if(CommonConfigs.GRID_GATEWAY.get()) {
+            return GridGatewayShape.GRID_GATEWAY_SHAPE;
+        }
+        return GridGatewayShape.GATEWAY_DEFAULT_SHAPE;
     }
 }

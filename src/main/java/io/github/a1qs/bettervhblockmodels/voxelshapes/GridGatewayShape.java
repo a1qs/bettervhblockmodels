@@ -1,11 +1,13 @@
 package io.github.a1qs.bettervhblockmodels.voxelshapes;
 
 import io.github.a1qs.bettervhblockmodels.util.VoxelShapeUtil;
+import net.minecraft.world.level.block.Block;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
 public class GridGatewayShape {
     public static final VoxelShape GRID_GATEWAY_SHAPE;
+    public static final VoxelShape GATEWAY_DEFAULT_SHAPE;
     static {
         VoxelShape[] shape = {
                 Shapes.box(0.0625, 0, 0.0625, 0.9375, 0.125, 0.9375),
@@ -45,5 +47,6 @@ public class GridGatewayShape {
                 Shapes.box(0.9375, 0, 0.1875, 1, 0.0625, 0.8125),
         };
         GRID_GATEWAY_SHAPE = VoxelShapeUtil.mergeVoxelShapes(shape);
+        GATEWAY_DEFAULT_SHAPE = Block.box(3.0, 0.0, 3.0, 13.0, 18.0, 13.0);
     }
 }

@@ -1,5 +1,6 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.ObeliskShape;
 import iskallia.vault.block.ObeliskBlock;
 import net.minecraft.core.BlockPos;
@@ -22,7 +23,10 @@ public class MixinObeliskBlock {
     @Overwrite
     @Nonnull
     public VoxelShape getShape(@Nonnull BlockState state, @Nonnull BlockGetter world, @Nonnull BlockPos pos, @Nonnull CollisionContext context) {
-        VoxelShape shape = ObeliskShape.OBELISK_SHAPE;
-        return state.getValue(ObeliskBlock.HALF) == DoubleBlockHalf.UPPER ? shape.move(0.0, -1.0, 0.0) : shape;
+        if (CommonConfigs.OBELISK.get()) {
+            VoxelShape shape = ObeliskShape.OBELISK_SHAPE;
+            return state.getValue(ObeliskBlock.HALF) == DoubleBlockHalf.UPPER ? shape.move(0.0, -1.0, 0.0) : shape;
+        }
+        return state.getValue(ObeliskBlock.HALF) == DoubleBlockHalf.UPPER ? ObeliskShape.DEFAULT_OBELISK_SHAPE : ObeliskShape.DEFAULT_OBELISK_SHAPE_TOP;
     }
 }

@@ -1,5 +1,6 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.MonolithShape;
 import iskallia.vault.block.MonolithBlock;
 import net.minecraft.core.BlockPos;
@@ -21,7 +22,10 @@ public class MixinMonolithBlock {
     @Overwrite
     @Nonnull
     public VoxelShape getShape(@Nonnull BlockState state, @Nonnull BlockGetter world, @Nonnull BlockPos pos, @Nonnull CollisionContext context) {
-        return MonolithShape.MONOLITH_SHAPE;
-    //}
+        if (CommonConfigs.MONOLITH.get()) {
+            return MonolithShape.MONOLITH_SHAPE;
+        }
+        return MonolithShape.DEFAULT_MONOLITH_SHAPE;
+
     }
 }

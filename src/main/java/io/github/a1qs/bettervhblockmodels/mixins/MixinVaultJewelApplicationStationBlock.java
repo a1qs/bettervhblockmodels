@@ -1,6 +1,7 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.JewelApplicatorShape;
 import iskallia.vault.block.VaultJewelApplicationStationBlock;
 import net.minecraft.core.BlockPos;
@@ -24,15 +25,18 @@ public class MixinVaultJewelApplicationStationBlock {
     @Overwrite
     @Nonnull
     public VoxelShape getShape(@Nonnull BlockState state, @Nonnull BlockGetter world, @Nonnull BlockPos pos, @Nonnull CollisionContext context) {
-        VoxelShape shape;
-        Direction direction = state.getValue(VaultJewelApplicationStationBlock.FACING);
-        switch (direction) {
-            case SOUTH -> shape = JewelApplicatorShape.JEWEL_APPLICATOR_SHAPE_180;
-            case EAST -> shape = JewelApplicatorShape.JEWEL_APPLICATOR_SHAPE_90;
-            case NORTH -> shape = JewelApplicatorShape.JEWEL_APPLICATOR_SHAPE;
-            default -> shape = JewelApplicatorShape.JEWEL_APPLICATOR_SHAPE_270;
-        }
+        if (CommonConfigs.JEWEL_APPLICATOR.get()) {
+            VoxelShape shape;
+            Direction direction = state.getValue(VaultJewelApplicationStationBlock.FACING);
+            switch (direction) {
+                case SOUTH -> shape = JewelApplicatorShape.JEWEL_APPLICATOR_SHAPE_180;
+                case EAST -> shape = JewelApplicatorShape.JEWEL_APPLICATOR_SHAPE_90;
+                case NORTH -> shape = JewelApplicatorShape.JEWEL_APPLICATOR_SHAPE;
+                default -> shape = JewelApplicatorShape.JEWEL_APPLICATOR_SHAPE_270;
+            }
 
-        return shape;
+            return shape;
+        }
+        return VaultJewelApplicationStationBlock.SHAPE;
     }
 }

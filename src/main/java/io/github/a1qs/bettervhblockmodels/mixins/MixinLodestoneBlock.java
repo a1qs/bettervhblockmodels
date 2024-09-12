@@ -1,5 +1,6 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.LodestoneShape;
 import iskallia.vault.block.LodestoneBlock;
 import net.minecraft.core.BlockPos;
@@ -21,6 +22,9 @@ public class MixinLodestoneBlock {
     @Overwrite
     @Nonnull
     public VoxelShape getShape(@Nonnull BlockState state, @Nonnull BlockGetter world, @Nonnull BlockPos pos, @Nonnull CollisionContext context) {
-        return LodestoneShape.LODESTONE_SHAPE;
+        if (CommonConfigs.LODESTONE.get()) {
+            return LodestoneShape.LODESTONE_SHAPE;
+        }
+        return LodestoneShape.DEFAULT_LODESTONE_SHAPE;
     }
 }

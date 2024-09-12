@@ -1,6 +1,7 @@
 package io.github.a1qs.bettervhblockmodels.voxelshapes;
 
 import io.github.a1qs.bettervhblockmodels.util.VoxelShapeUtil;
+import net.minecraft.world.phys.shapes.BooleanOp;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
 
@@ -9,6 +10,8 @@ public class SkillAltarShape {
     public static final VoxelShape SKILL_ALTAR_SHAPE_90;
     public static final VoxelShape SKILL_ALTAR_SHAPE_180;
     public static final VoxelShape SKILL_ALTAR_SHAPE_270;
+    public static final VoxelShape SKILL_ALTAR_X_SHAPE;
+    public static final VoxelShape SKILL_ALTAR_Z_SHAPE;
     static {
         VoxelShape[] shape = {
                 Shapes.box(0.0625, 0.3125, 0.25, 0.9375, 0.375, 0.75),
@@ -22,5 +25,8 @@ public class SkillAltarShape {
         SKILL_ALTAR_SHAPE_90 = VoxelShapeUtil.rotateShape(SKILL_ALTAR_SHAPE, 90);
         SKILL_ALTAR_SHAPE_180 = VoxelShapeUtil.rotateShape(SKILL_ALTAR_SHAPE, 180);
         SKILL_ALTAR_SHAPE_270 = VoxelShapeUtil.rotateShape(SKILL_ALTAR_SHAPE, 270);
+
+        SKILL_ALTAR_X_SHAPE = Shapes.join(Shapes.box(0.1875, 0.0, 0.0, 0.8125, 0.375, 1.0), Shapes.box(0.4375, 0.375, 0.09375, 0.5625, 0.96875, 0.90625), BooleanOp.OR);
+        SKILL_ALTAR_Z_SHAPE = Shapes.join(Shapes.box(0.0, 0.0, 0.1875, 1.0, 0.375, 0.8125), Shapes.box(0.09375, 0.375, 0.4375, 0.90625, 0.96875, 0.5625), BooleanOp.OR);
     }
 }

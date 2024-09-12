@@ -1,5 +1,6 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.StabilizerShape;
 import iskallia.vault.block.StabilizerBlock;
 import net.minecraft.core.BlockPos;
@@ -19,7 +20,10 @@ public class MixinStabilizerBlock {
      */
     @Overwrite
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        VoxelShape shape = StabilizerShape.STABILIZER_SHAPE;
-        return pState.getValue(StabilizerBlock.HALF) == DoubleBlockHalf.UPPER ? shape.move(0.0, -1.0, 0.0) : shape;
+        if (CommonConfigs.STABILIZER.get()) {
+            VoxelShape shape = StabilizerShape.STABILIZER_SHAPE;
+            return pState.getValue(StabilizerBlock.HALF) == DoubleBlockHalf.UPPER ? shape.move(0.0, -1.0, 0.0) : shape;
+        }
+        return pState.getValue(StabilizerBlock.HALF) == DoubleBlockHalf.UPPER ? StabilizerShape.STABILIZER_DEFAULT_SHAPE_1 : StabilizerShape.STABILIZER_DEFAULT_SHAPE_2;
     }
 }

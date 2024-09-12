@@ -1,6 +1,7 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.MVPCrownShape;
 import iskallia.vault.block.MVPCrownBlock;
 import net.minecraft.core.BlockPos;
@@ -20,6 +21,9 @@ public class MixinMVPCrownBlock {
      */
     @Overwrite
     public VoxelShape getShape(BlockState state, BlockGetter worldIn, BlockPos pos, CollisionContext context) {
-        return MVPCrownShape.MVP_CROWN_SHAPE;
+        if (CommonConfigs.MVP_CROWN.get()) {
+            return MVPCrownShape.MVP_CROWN_SHAPE;
+        }
+        return MVPCrownBlock.SHAPE;
     }
 }

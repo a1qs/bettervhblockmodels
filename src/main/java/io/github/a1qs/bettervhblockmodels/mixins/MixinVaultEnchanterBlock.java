@@ -1,5 +1,6 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.VaultEnchanterShape;
 import iskallia.vault.block.VaultEnchanterBlock;
 import net.minecraft.core.BlockPos;
@@ -21,6 +22,9 @@ public class MixinVaultEnchanterBlock {
     @Nonnull
     @Overwrite
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        return VaultEnchanterShape.VAULT_ENCHANTER_SHAPE;
+        if (CommonConfigs.VAULT_ENCHANTER.get()) {
+            return VaultEnchanterShape.VAULT_ENCHANTER_SHAPE;
+        }
+        return VaultEnchanterBlock.SHAPE;
     }
 }

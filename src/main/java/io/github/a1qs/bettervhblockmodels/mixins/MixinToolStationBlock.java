@@ -1,5 +1,6 @@
 package io.github.a1qs.bettervhblockmodels.mixins;
 
+import io.github.a1qs.bettervhblockmodels.config.CommonConfigs;
 import io.github.a1qs.bettervhblockmodels.voxelshapes.ToolStationShape;
 import iskallia.vault.block.ToolStationBlock;
 import net.minecraft.core.BlockPos;
@@ -22,14 +23,17 @@ public class MixinToolStationBlock {
     @Nonnull
     @Overwrite
     public VoxelShape getShape(BlockState pState, BlockGetter pLevel, BlockPos pPos, CollisionContext pContext) {
-        VoxelShape shape;
-        Direction direction = pState.getValue(ToolStationBlock.FACING);
-        switch (direction) {
-            case SOUTH -> shape = ToolStationShape.TOOL_STATION_SHAPE_90;
-            case EAST -> shape = ToolStationShape.TOOL_STATION_SHAPE;
-            case NORTH -> shape = ToolStationShape.TOOL_STATION_SHAPE_270;
-            default -> shape = ToolStationShape.TOOL_STATION_SHAPE_180;
+        if (CommonConfigs.TOOLSTATION.get()) {
+            VoxelShape shape;
+            Direction direction = pState.getValue(ToolStationBlock.FACING);
+            switch (direction) {
+                case SOUTH -> shape = ToolStationShape.TOOL_STATION_SHAPE_90;
+                case EAST -> shape = ToolStationShape.TOOL_STATION_SHAPE;
+                case NORTH -> shape = ToolStationShape.TOOL_STATION_SHAPE_270;
+                default -> shape = ToolStationShape.TOOL_STATION_SHAPE_180;
+            }
+            return shape;
         }
-        return shape;
+        return ToolStationBlock.SHAPE;
     }
 }
